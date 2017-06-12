@@ -1,7 +1,12 @@
 class OwnersController < ApplicationController
-  def index
-    
+  
+  def home
   end
+
+  def index
+  
+  end
+  
   def new
   end
 
