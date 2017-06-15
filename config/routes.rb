@@ -1,36 +1,65 @@
 Rails.application.routes.draw do
 
-  # #owners routes
-  get '/' => 'owners#home'
-  get '/home' => 'owners#home'
 
 
-  get '/home_owner' =>'owners#index'
 
-  get '/signup_owner' => 'owners#new'
+  #owners routes
+  get '/' => 'owners#index'
+  get '/owners' => 'owners#index'
+
+  get '/owners/new' => 'owners#new'
   post '/owners'=> 'owners#create'
 
-  #owner sessions
+  get '/owners/:id' => 'owners#show'
 
+  get '/owners/:id/edit' => 'owners#edit'
+  patch '/owners/:id' => 'owners#update'
+
+  delete '/owners/:id' => 'owners#destroy'
+ 
+  #owner login-------------------------
+ 
   get '/login_owner' => 'sessions#new'
   post '/login_owner' => 'sessions#create'
 
-  delete '/logout_owner' => 'sessions#destroy'
-
- 
+  get '/logout_owner' => 'sessions#destroy'
 
   #walkers routes
 
-  get '/home_walker' => 'walkers#index'
-  get '/signup_walker' => 'walkers#new'
+  get '/' => 'walkers#index'
+  get '/walkers' => 'walkers#index'
+
+  get '/walker/new' => 'walkers#new'
   post '/walkers' => 'walkers#create'
 
-  #walker sessions
+  get '/walkers/:id' => 'walkers#show'
 
+  get '/walkers/:id/edit' => 'walkers#edit'
+  patch '/walkers/:id/' => 'walkers#update'
+
+  delete '/walkers/:id' => 'walkers#destroy'
+  
+  #walker login-------------------------------
+  
   get '/login_walker' => 'walker_sessions#new'
   post '/login_walker' => 'walker_sessions#create'
 
-  delete '/logout_walker' => 'walker_sessions#destroy'
+  get '/logout_walker' => 'walker_sessions#destroy'
+
+
+
+
+
+
+
+  # #dog routes
+
+  # get '/dogs/new' => 'dogs#new'
+  # post '/dogs/:id' => 'dogs#create'
+
+
+
+
 
 
 

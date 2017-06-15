@@ -1,2 +1,8 @@
-<h1>Welcome To Woof!</h1>
-<h6>walkers</h6>
+<h1>Walkers</h1>
+
+<div class="row">
+  <%= @walkers.each do |walker| %>
+    <h4><a href="/walkers/<%= walker.id %>"><%= walker.first_name %></a></h4>
+    <h5><%= walker.email %></h5>
+  <% end %>
+</div>

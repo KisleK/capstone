@@ -1,0 +1,9 @@
+
+<h2>Name: <%= @walker.first_name %> <%= @walker.last_name %></h2>
+<h4>Email: <%= @walker.email %></h4>
+<h4>Team: <%= @walker.phone_number %></h4>
+
+<% if current_walker.id == @walker.id %> 
+  <%= link_to "Edit", "/walkers/#{@walker.id}/edit" %> |
+  <%= link_to "Delete", "/walkers/#{@walker.id}", method: :delete %>
+<% end %>

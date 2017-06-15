@@ -1,0 +1,8 @@
+<h2>Name: <%= @owner.first_name %> <%= @owner.last_name %></h2>
+<h4>Email: <%= @owner.email %></h4>
+<h4>Team: <%= @owner.phone_number %></h4>
+
+<% if current_owner.id == @owner.id %> 
+  <%= link_to "Edit", "/owners/#{@owner.id}/edit" %> |
+  <%= link_to "Delete", "/owners/#{@owner.id}", method: :delete %>
+<% end %>
