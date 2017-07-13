@@ -1,24 +1,22 @@
+
+
+
 <h1>Add a Dog</h1>
 
-<%= form_tag '/owners_index', method: :post do %>
+<%= form_tag '/dogs', method: :post do %>
 
   <div>
-    <%= label_tag :name %>
-    <%= text_field_tag :name%>
+      <%= text_field_tag :name, nil, placeholder: 'Dogs Name' %>
   </div>
 
   <div>
-    <%= label_tag :breed %>
-    <%= text_field_tag :breed %>
+      <%= text_field_tag :breed, nil, placeholder: 'Breed' %>
   </div>
 
   <div>
-    <%= label_tag :gender %>
-    <%= text_field_tag :gender%>
+      <%= text_field_tag :gender, nil, placeholder: 'Gender' %>
   </div>
-
- 
-
+  
   <%= submit_tag "Add Puppy" %>
 
  <% end %>

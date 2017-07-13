@@ -1,13 +1,17 @@
 class OwnersController < ApplicationController
-  
-  def index
-    @owners = Owner.all.order('created_at desc')
+  before_action :authenticate_owner!, except: [:home, :new, :create]
+  def home
+    
   end
 
-  def show       #delete hashed show lines?
-    #owner_id = params[:id]
+  def index
+   @owners = Owner.all
+
+  end
+
+  def show     
     @owner = Owner.find_by(id: params[:id])
-    #redirect_to '/owners'
+  
   end
 
   def new
@@ -15,45 +19,53 @@ class OwnersController < ApplicationController
   end
 
   def create
-    owner = Owner.new(first_name: params[:first_name],
-                         last_name: params[:last_name],
-                         email: params[:email],
-                         address: params[:address],
-                         phone_number: params[:phone_number],
-                         password: params[:password],
-                         password_confirmation: params[:password_confirmation]
-                        )
-     if owner.save
+    @owner = Owner.new(
+                       first_name: params[:first_name],
+                       last_name: params[:last_name],
+                       email: params[:email],
+                       address: params[:address],
+                       city: params[:city],
+                       state: params[:state],
+                       zip_code: params[:zip_code],
+                       phone_number: params[:phone_number],
+                       bio: params[:bio],
+                       password: params[:password],
+                       password_confirmation: params[:password_confirmation]
+                      )
+     if @owner.save
       session[:owner_id] = @owner.id
       flash[:success] = "Created"
-      redirect_to '/owners'
+      redirect_to "/owners/#{@owner.id}"
     else
-      flash[:warning] = "Invalid email or password"
+       @owners.errors.full_messages
       render 'new.html.erb'
     end
   end
 
 
   def edit
+   
     @owner = Owner.find(params[:id])
   end
 
   def update
-    ##??? may need to update(compare to overflow)
-    @owner = Owner.find(params[:id])
-    owenr.assign_attributes(
-                            first_name: params[:first_name],
-                            last_name: params[:last_name],
-                            email: params[:email],
-                            address: params[:address],
-                            phone_number: params[:phone_number]
-                            )
-    owner.save
-    flash[:success] = "Profile Updated"
-    redirect_to '/owners'
-  end
 
-  def destroy
+    @owner = Owner.find(params[:id])
+    @owner.assign_attributes(
+                             first_name: params[:first_name],
+                             last_name: params[:last_name],
+                             email: params[:email],
+                             address: params[:address],
+                             city: params[:city],
+                             state: params[:state],
+                             zip_code: params[:zip_code],
+                             phone_number: params[:phone_number],
+                             bio: params[:bio]
+                            )
+     @owner.save!
+      flash[:success] = "Profile Updated"
+      redirect_to "/owners/#{@owner.id}"
+    
   end
 
 end

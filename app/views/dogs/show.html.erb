@@ -1,0 +1,14 @@
+<% @dog = Dog.find(params[:id]) %>
+<h6>Insert picture</h6>
+<h3><a href="/dogs/<%= @dog.id %>}/edit"><%= @dog.name%></a></h3>
+
+
+<div class="dog">
+  
+<h3><%= @dog.breed %></h3>
+<h4><%= @dog.gender %></h4>
+<h3><%=  %></h3>
+<h3><%=  %></h3>
+</div>
+
+<div><a href="/walks/new">Request a walk!</a></div>

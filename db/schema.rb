@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611190311) do
+ActiveRecord::Schema.define(version: 20170713011145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20170611190311) do
     t.string "gender"
     t.string "medication"
     t.integer "owner_id"
-    t.integer "walker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "number_1", default: false
@@ -38,6 +37,14 @@ ActiveRecord::Schema.define(version: 20170611190311) do
     t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "bio"
+    t.string "city"
+    t.string "state"
+    t.integer "zip_code"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "walkers", force: :cascade do |t|
@@ -50,13 +57,25 @@ ActiveRecord::Schema.define(version: 20170611190311) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "phone_number"
+    t.string "city"
+    t.string "state"
+    t.integer "zip_code"
+    t.text "bio"
+    t.integer "walk_id"
   end
 
   create_table "walks", force: :cascade do |t|
     t.integer "owner_id"
-    t.integer "walker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "name"
+    t.string "breed"
+    t.string "gender"
+    t.integer "age"
+    t.string "last_name"
+    t.string "status"
+    t.integer "walker_id"
   end
 
 end

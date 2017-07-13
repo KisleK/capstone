@@ -1,8 +1,87 @@
-<h2>Name: <%= @owner.first_name %> <%= @owner.last_name %></h2>
-<h4>Email: <%= @owner.email %></h4>
-<h4>Team: <%= @owner.phone_number %></h4>
+<h1>Welcome To Woof! </h1>
 
-<% if current_owner.id == @owner.id %> 
-  <%= link_to "Edit", "/owners/#{@owner.id}/edit" %> |
-  <%= link_to "Delete", "/owners/#{@owner.id}", method: :delete %>
+<% if @owner.image_file_name %>
+  <%= image_tag @owner.image.url(:thumbnail) %>
 <% end %>
+<%= form_for @owner, url: update_image_path, html: {multipart: true} do |f| %>
+
+<%= f.file_field :image %>
+<%= submit_tag " Update" %>
+
+<% end %>
+
+
+
+
+<div class="row">
+  
+    <div class="col-sm-4">
+      <div>
+        <h6>insert profile picture here</h6>
+        <h1>My Info:</h1>
+
+        <h4><a href="/owners/<%= current_owner.id %>/edit"><%= @current_owner.first_name %> <%= @current_owner.last_name %></a></h4>
+
+        <h5> </h5>
+        <h5> <%= @current_owner.email %></h5>
+        <h5> <%= @current_owner.address %> </h4>
+        <h5><%= @current_owner.city %>, <%= @current_owner.state %> <%= @current_owner.zip_code %></h5>
+        <h5> <%= @current_owner.phone_number %></h5>
+        <br>
+        <h5>About Me: </h5>
+        <h6><%= @current_owner.bio %></h6>
+      </div>
+    </div>
+
+              
+
+    <div class="col-sm-4">
+      <div>
+        <h1>My Dogs.</h1>
+        <br>
+        <h6><% @current_owner.dogs.each do |dog| %>
+          <div >
+             <h4><a href="/dogs/<%= dog.id %>"><%= dog.name%></a></h4>
+              </h6>
+               <br> 
+             
+            </div>
+           <% end %>
+        </h6>
+        <br>
+      </div>
+    </div>
+
+
+
+
+    <div class="col-sm-4">
+   
+      <div>
+        <h1>Requested Walks.</h1>
+        <br>
+          <div >
+            <h6><% @current_owner.walks = Walk.where(status: "walk requested") %>
+            <% @current_owner.walks.each do |walk| %>
+             <h4><a href="/walks/<%= walk.id %>/edit"><%= walk.name %></h4>
+             <h6></a>
+             
+             <br>
+          </div>
+         <% end %>
+        </h6>
+        <br>
+      </div>
+    </div>
+
+
+
+</div>
+
+      
+      
+        
+
+
+  
+

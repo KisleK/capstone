@@ -1,57 +1,62 @@
 class WalkersController < ApplicationController
+    before_action :authenticate_walker!, except: [:new, :index, :create, :show]
 
   def index
-    @walker = Walker.all.order('created_at desc')
+    @walkers = Walker.all
   end
 
-
-  def show      #delete hashed show lines?
-    # walker_id = params[:id]
-    @walker = Walker.find_by(id: owner_id)
-    # redirect_to '/walkers'
-
+  def show
+    @walker = Walker.find_by(id: params[:id])
+  end
 
   def new
     @walker = Walker.new
   end
 
   def create
-   walker = Walker.new(first_name: params[:first_name],
-                         last_name: params[:last_name],
-                         address: params[:address],
-                         phone_number: params[:phone_number],
-                         email: params[:email],
-                         password: params[:password],
-                         password_confirmation: params[:password_confirmation]
+   @walker = Walker.new(first_name: params[:first_name],
+                       last_name: params[:last_name],
+                       email: params[:email],
+                       address: params[:address],
+                       city: params[:city],
+                       state: params[:state],
+                       zip_code: params[:zip_code],
+                       phone_number: params[:phone_number],
+                       bio: params[:bio],
+                       password: params[:password],
+                       password_confirmation: params[:password_confirmation]
                         )
-    if walker.save
-      session[:walker_id] @walker.id
+    if @walker.save
+      session[:walker_id] = @walker.id
       flash[:success] = "Created"
-      redirect_to '/walkers'
+      redirect_to "/walkers/#{@walker.id}"
     else
-      flash[:warning] = "Invalid email or password"
-      # redirect_to '/signup_walker'. (alt syntax)
+       @walker.errors.full_messages
       render 'new.html.erb'
     end
   end
 
 
   def edit
+ 
     @walker = Walker.find(params[:id])
     
   end
 
   def update
     @walker = Walker.find(params[:id])
-    walker.assign_attributes(
-
-                            first_name: params[:first_name],
-                            last_name: params[:last_name],
-                            email: params[:email],
-                            address: params[:address],
-                            phone_number: params[:phone_number]
+    @walker.assign_attributes(
+                             first_name: params[:first_name],
+                             last_name: params[:last_name],
+                             email: params[:email],
+                             address: params[:address],
+                             city: params[:city],
+                             state: params[:state],
+                             zip_code: params[:zip_code],
+                             phone_number: params[:phone_number],
+                             bio: params[:bio]
                             )
-    walker.save
+    @walker.save
     flash[:success] = "Profile updated"
     redirect_to '/walkers'
   end

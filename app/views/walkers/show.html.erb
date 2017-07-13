@@ -1,9 +1,46 @@
+<h1>Welcome To Woof! </h1>
+  <div class="row">
+    <div class="col-sm-4">
+     <div>
+       <h6>insert profile picture here</h6>
+       <h1>My Info:</h1>
+         <h4><a href="/walkers/<%= @walker.id %>/edit"><%= @walker.first_name %> <%= @walker.last_name %></a></h4>
+       <h5> <%= @walker.email %></h5>
+       <h5> <%= @walker.address %> </h4>
+       <h5><%= @walker.city %>, <%= @walker.state %> <%= @walker.zip_code %></h5>
+       <h5>  <%= @walker.phone_number %></h5>
+       <h5>About Me: </h5>
+       <h6> <%= @walker.bio %></h6>
+     </div>
+  </div>
+  
+  <div class="col-md-4">
+    <div>
+      <h1>All available walks.</h1> 
+    
+         <% @walks = Walk.where(status: "walk requested") %>
+            <% @walks.each do |walk| %>
+           
+          
+            <p> <a> <%= link_to "#{walk.name}", "/walks/#{walk.id}", method: :patch %> </a> </p>
+            
+            <% end %>
+        </div>
+      </div>
 
-<h2>Name: <%= @walker.first_name %> <%= @walker.last_name %></h2>
-<h4>Email: <%= @walker.email %></h4>
-<h4>Team: <%= @walker.phone_number %></h4>
 
-<% if current_walker.id == @walker.id %> 
-  <%= link_to "Edit", "/walkers/#{@walker.id}/edit" %> |
-  <%= link_to "Delete", "/walkers/#{@walker.id}", method: :delete %>
-<% end %>
+
+
+  <div class="col-md-4">
+    <div>
+      <h1>Accepted walks:</h1>
+      <% @walks = Walk.where(status: "walk accepted", walker_id: current_walker.id) %>
+              <% @walks.each do |walk| %>
+             <h4> <%= walk.name %> </h4>
+              <% end %>
+    </div>
+  </div>
+
+
+
+</div>

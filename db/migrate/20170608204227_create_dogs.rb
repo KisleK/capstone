@@ -9,7 +9,7 @@ class CreateDogs < ActiveRecord::Migration[5.1]
       t.boolean :number_2
       t.integer :owner_id
       t.integer :walker_id
-
+ 
       t.timestamps
     end
   end

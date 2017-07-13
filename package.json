@@ -1,5 +1,7 @@
 {
   "name": "capstone",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "particle-api-js": "^6.5.0"
+  }
 }

@@ -1,7 +1,7 @@
 <h1>Update Profile</h1>
 
 <%= form_tag "/owners/#{@owner.id}", method: :patch do %>
-  
+
   <div class="form-group">
     <%= label_tag :first_name %>
     <%= text_field_tag :first_name, @owner.first_name, :class => "form-control" %>
@@ -21,6 +21,21 @@
     <%= label_tag :address %>
     <%= text_field_tag :address, @owner.address, :class => "form-control" %>
   </div>
+  
+   <div class="form-group">
+    <%= label_tag :city %>
+    <%= text_field_tag :city, @owner.city, :class => "form-control" %>
+  </div>
+
+   <div class="form-group">
+    <%= label_tag :state %>
+    <%= text_field_tag :state, @owner.state, :class => "form-control" %>
+  </div>
+
+   <div class="form-group">
+    <%= label_tag :zip_code %>
+    <%= text_field_tag :zip_code, @owner.zip_code, :class => "form-control" %>
+  </div>
 
   <div class="form-group">
     <%= label_tag :phone_number %>
@@ -28,15 +43,22 @@
   </div>
 
   <div class="form-group">
-    <%= label_tag :password, "Password:" %>
-    <%= password_field_tag :password, @owner.password, :class => "form-control" %>
+      <%= label_tag :bio %>
+      <%= text_field_tag :bio, @owner.bio, :class => "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= label_tag :password_confirmation, "Re-Enter Password" %>
-    <%= password_field_tag :password_confirmation, nil, :class => "form-control" %>
+  <div>
+    <span class="text-danger"> * </span>
+      <%= label_tag :password, "Password:" %>
+      <%= password_field_tag :password, @owner.password, :class => "form-control" %>
   </div>
-  
+
+  <div>
+    <span class="text-danger"> * </span>
+      <%= label_tag :password_confirmation, "Re-Enter Password" %>
+      <%= password_field_tag :password_confirmation, nil, :class => "form-control" %>
+  </div>
+  <br>
   <div class="form-group">
     <%= submit_tag "Update Account", :class => "btn btn-sm btn-success"%>
   </div>

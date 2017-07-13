@@ -33,13 +33,13 @@ gem 'bcrypt', '~> 3.1.7'
 
 #ADD MORE GEMS HERE
 
-gem 'bootstrap-sass', '~> 3.3.6'
-gem 'jquery-rails', '~> 4.3.1' 
+# gem 'bootstrap-sass', '~> 3.3.6'
+# gem 'jquery-rails', '~> 4.3.1' 
+gem 'seed_dump'
+gem 'figaro'
 
-
-
-
-
+gem 'aws-sdk', '~> 2.3'
+gem 'paperclip'
 
 
 

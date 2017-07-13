@@ -1,43 +1,51 @@
+
+
 <h1>Become a Walker</h1>
 
-
 <%= form_tag '/walkers', method: :post do %>
-  <div>
-    <%= label_tag :first_name %>
-    <%= text_field_tag :first_name %>
+
+
+
+<div>
+    <%= text_field_tag :first_name, nil, placeholder: 'First Name' %>
   </div>
 
   <div>
-    <%= label_tag :last_name %>
-    <%=  text_field_tag :lastname %>
-  </div> 
-
-   <div>
-    <%= label_tag :email %>
-    <%= email_field_tag :email %>
-  </div>  
+    <%= text_field_tag :first_name, nil, placeholder: 'Last Name' %>
+  </div>
+  <br>
+  <div> 
+    <%= email_field_tag :email, nil, placeholder: 'E-mail Address' %>
+  </div>
+  <br>
+   
 
   <div>
-    <%= label_tag :phone_number %>
-    <%= phone_field_tag :phone_number %>
+   
+    <%= phone_field_tag :phone_number, nil, placeholder: 'Phone Number' %>
   </div> 
 
-   <div>
-    <%= label_tag :address %>
-    <%= text_field_tag :address %>
+
+  <div>
+    <%= text_field_tag :address, nil, placeholder: 'Address' %>
   </div>
 
    <div>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div> 
+    <%= text_field_tag :city, nil, placeholder: 'City' %>
+    <%= text_field_tag :state, nil, placeholder: 'State' %>
+    <%= text_field_tag :zip, nil, placeholder: 'Zip Code' %>
+  </div>
+   
+  <br>
+  <div> 
+    <%= password_field_tag :password, nil, placeholder: 'Password' %>
+  </div>
 
-   <div>
-    <%= label_tag :password_confirmation %>
-    <%= password_field_tag :password_confirmation %>
-  </div> 
-
-
+  <div> 
+    <%= password_field_tag :password_confirmation, nil, placeholder: 'Confirm Password' %>
+  </div>
+  <br>
+  
   <%= submit_tag "Create Account" %>
 
 <% end %>

@@ -1,0 +1,36 @@
+<h1>Update Walk</h1>
+
+<%= form_tag "/walks/#{@walk.id}", method: :patch do %>
+
+ <%= hidden_field_tag :first_name, @current_owner.first_name %>
+    <%= hidden_field_tag :last_name, @current_owner.last_name %>
+
+
+  <div>
+    <h4>Pups info</h4>
+  </div>
+  <div>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, @walk.name %>
+  </div>  
+  <div>
+    <%= label_tag :breed %>
+    <%= text_field_tag :breed, @walk.breed %>
+  </div>
+  <div>
+    <%= label_tag :age %>
+    <%= text_field_tag :age, @walk.age %>  years old. 
+  </div>
+  <div>
+    <%= label_tag :gender %>
+    <%= text_field_tag :gender, @walk.gender %>
+  </div>
+
+
+  
+  <div class="form-group">
+    <%= submit_tag "Update Walk", :class => "btn btn-sm btn-success"%>
+    <%= link_to "Remove", "/walks/#{ @walk.id}", :class => "btn btn-sm btn-danger", method: :delete %></h6>
+
+  </div>
+<% end %>

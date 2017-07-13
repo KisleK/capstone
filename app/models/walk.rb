@@ -1,4 +1,4 @@
 class Walk < ApplicationRecord
   belongs_to :owner
-  belongs_to :walker
+  belongs_to :walker, optional: true
 end

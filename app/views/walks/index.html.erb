@@ -1,0 +1,14 @@
+<h4>Take for a walk!</h4>
+    
+ <div>
+      <h1>Requested Walks.</h1>
+      <br>
+      <h6><% @current_owner.walks.each do |walk| %>
+        <div >
+           <h4><%= walk.name %></h4>
+           
+        </div>
+       <% end %>
+      </h6>
+      <br>
+    </div>

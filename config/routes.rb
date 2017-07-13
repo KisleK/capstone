@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+  #home route--------------------
+
+  get '/' =>'owners#home'
 
 
+  #owners routes---------------------
 
-  #owners routes
   get '/' => 'owners#index'
   get '/owners' => 'owners#index'
 
@@ -15,7 +18,8 @@ Rails.application.routes.draw do
   get '/owners/:id/edit' => 'owners#edit'
   patch '/owners/:id' => 'owners#update'
 
-  delete '/owners/:id' => 'owners#destroy'
+  patch '/owners/:id/image', to: 'owner_image#update', as: :update_image
+  
  
   #owner login-------------------------
  
@@ -24,12 +28,12 @@ Rails.application.routes.draw do
 
   get '/logout_owner' => 'sessions#destroy'
 
-  #walkers routes
+  #walkers routes----------------------
 
   get '/' => 'walkers#index'
   get '/walkers' => 'walkers#index'
 
-  get '/walker/new' => 'walkers#new'
+  get '/walkers/new' => 'walkers#new'
   post '/walkers' => 'walkers#create'
 
   get '/walkers/:id' => 'walkers#show'
@@ -37,7 +41,7 @@ Rails.application.routes.draw do
   get '/walkers/:id/edit' => 'walkers#edit'
   patch '/walkers/:id/' => 'walkers#update'
 
-  delete '/walkers/:id' => 'walkers#destroy'
+  
   
   #walker login-------------------------------
   
@@ -47,20 +51,35 @@ Rails.application.routes.draw do
   get '/logout_walker' => 'walker_sessions#destroy'
 
 
+  #dog routes-------------------------
 
+  
 
+  get '/dogs/new' => 'dogs#new'
+  post '/dogs' => 'dogs#create'
 
+  get '/dogs/:id' => 'dogs#show'
 
+  get '/dogs/:id/edit' => 'dogs#edit'
+  patch '/dogs/:id' => 'dogs#update'
 
-  # #dog routes
+  delete '/dogs/:id' => 'dogs#destroy'
 
-  # get '/dogs/new' => 'dogs#new'
-  # post '/dogs/:id' => 'dogs#create'
+ 
+  #walk routes----------
+  get '/walks' => 'walks#index'
+  get '/walks/new' => 'walks#new'
+  post '/walks' => 'walks#create'
 
+  get '/walks/:id' => 'walks#show'
 
+  get '/walks/:id/edit' => 'walks#edit'
+  patch '/walks/:id' => 'walks#update'
 
+  delete '/walks/:id' => 'walks#destroy'
 
-
+  #accepted walks
+  patch '/walks_accepted/:id' => 'walks_accepted#update'
 
 
 end

@@ -1,8 +1,8 @@
 <h1>Update Profile</h1>
 
-<%= form_tag "/walkers/#{@walker.id}", method: :patch %>
+<%= form_tag "/walkers/#{@walker.id}", method: :patch do %>
 
-   <div class="form-group">
+  <div class="form-group">
     <%= label_tag :first_name %>
     <%= text_field_tag :first_name, @walker.first_name, :class => "form-control" %>
   </div>
@@ -21,6 +21,21 @@
     <%= label_tag :address %>
     <%= text_field_tag :address, @walker.address, :class => "form-control" %>
   </div>
+  
+   <div class="form-group">
+    <%= label_tag :city %>
+    <%= text_field_tag :city, @walker.city, :class => "form-control" %>
+  </div>
+
+   <div class="form-group">
+    <%= label_tag :state %>
+    <%= text_field_tag :state, @walker.state, :class => "form-control" %>
+  </div>
+
+   <div class="form-group">
+    <%= label_tag :zip_code %>
+    <%= text_field_tag :zip_code, @walker.zip_code, :class => "form-control" %>
+  </div>
 
   <div class="form-group">
     <%= label_tag :phone_number %>
@@ -28,15 +43,22 @@
   </div>
 
   <div class="form-group">
-    <%= label_tag :password, "Password:" %>
-    <%= password_field_tag :password, @walker.password, :class => "form-control" %>
+      <%= label_tag :bio %>
+      <%= text_field_tag :bio, @walker.bio, :class => "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= label_tag :password_confirmation, "Re-enter Password" %>
-    <%= password_field_tag :password_confirmation, nil, :class => "form-control" %>
+  <div>
+    <span class="text-danger"> * </span>
+      <%= label_tag :password, "Password:" %>
+      <%= password_field_tag :password, @walker.password, :class => "form-control" %>
   </div>
-  
+
+  <div>
+    <span class="text-danger"> * </span>
+      <%= label_tag :password_confirmation, "Re-Enter Password" %>
+      <%= password_field_tag :password_confirmation, nil, :class => "form-control" %>
+  </div>
+  <br>
   <div class="form-group">
     <%= submit_tag "Update Account", :class => "btn btn-sm btn-success"%>
   </div>
