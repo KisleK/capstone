@@ -6,7 +6,7 @@ class Walker < ApplicationRecord
   has_many :dogs, through: :owners
 
 
-  has_attched_file :image, :styles => { :medium => "300x300", :thumbnail => "200x200"}
+  has_attached_file :image, :styles => { :medium => "300x300", :thumbnail => "200x200"}
   validates_attachment :image, content_type: { content_type:  ["image/jpg", "image/jpeg", "image/png"]}
 
 

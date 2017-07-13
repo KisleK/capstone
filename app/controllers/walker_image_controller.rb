@@ -2,16 +2,16 @@ class WalkerImageController < ApplicationController
     def update
     @walker = Walker.find(params[:id])
     if @walker.update!( walker_params)
-      redirect_to "/walks/#{@walk.id}"
+      redirect_to "/walker/#{@walker.id}"
     else
-      redirect_to "/walks/#{@walk.id}"
+      redirect_to "/walker/#{@walker.id}"
     end
   end
 
   private
 
   def owner_params
-    params.require(:walk).permit(:image)
+    params.require(:walker).permit(:image)
   end
 
 end

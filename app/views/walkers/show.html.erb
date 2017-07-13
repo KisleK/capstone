@@ -2,7 +2,16 @@
   <div class="row">
     <div class="col-sm-4">
      <div>
-       <h6>insert profile picture here</h6>
+       <% if @walker.image_file_name %>
+         <%= image_tag @walker.imge.url(:thumbnail) %>
+       <% end %>
+        
+        <%= form_for @walker, url: update_image_path, html: {multipart: true} do |f| %>
+          <%= f.file_field :image %>
+          <%= submit_tag "Update" %>
+        <% end %>
+
+
        <h1>My Info:</h1>
          <h4><a href="/walkers/<%= @walker.id %>/edit"><%= @walker.first_name %> <%= @walker.last_name %></a></h4>
        <h5> <%= @walker.email %></h5>

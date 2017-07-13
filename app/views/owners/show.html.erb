@@ -76,6 +76,29 @@
 
 
 
+<h3>My Google Maps Demo</h3>
+<div id="map"></div>
+
+<script>
+  function initMap() {
+  var uluru = {lat: 42.0884, lng: -87.9806};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 12,
+    center: uluru
+  });
+  var marker = new google.maps.Marker({
+    position: uluru,
+    map: map
+  });
+}
+</script>
+
+
+<!-- Replace the value of the key parameter with your own API key. -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqQj3QdUnO3bLJfj4gbfDo9983DjWJe_w&callback=initMap">
+</script>
+
+
 </div>
 
       

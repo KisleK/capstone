@@ -1,5 +1,5 @@
 class DogImageController < ApplicationController
-    def update
+  def update
     @dog = Dog.find(params[:id])
     if @dog.update!( dog_params)
       redirect_to "/dogs/#{@dog.id}"

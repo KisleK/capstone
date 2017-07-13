@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get '/walkers/:id/edit' => 'walkers#edit'
   patch '/walkers/:id/' => 'walkers#update'
 
+   # patch '/walkers/:id/image', to: 'walker_image#update', as: :update_image
   
   
   #walker login-------------------------------
@@ -63,6 +64,8 @@ Rails.application.routes.draw do
   get '/dogs/:id/edit' => 'dogs#edit'
   patch '/dogs/:id' => 'dogs#update'
 
+  # patch '/dogs/:id/image', to: 'dog_image#update', as: :update_image
+
   delete '/dogs/:id' => 'dogs#destroy'
 
  
@@ -76,10 +79,11 @@ Rails.application.routes.draw do
   get '/walks/:id/edit' => 'walks#edit'
   patch '/walks/:id' => 'walks#update'
 
+  
+
   delete '/walks/:id' => 'walks#destroy'
 
-  #accepted walks
-  patch '/walks_accepted/:id' => 'walks_accepted#update'
+  
 
 
 end
