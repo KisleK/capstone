@@ -1,12 +1,15 @@
+<% @dog = Dog.find(params[:id]) %>
+
+
 <h1>Welcome To Woof! </h1>
   <div class="row">
     <div class="col-sm-4">
      <div>
        <% if @walker.image_file_name %>
-         <%= image_tag @walker.imge.url(:thumbnail) %>
+         <%= image_tag @walker.image.url(:thumbnail) %>
        <% end %>
         
-        <%= form_for @walker, url: update_image_path, html: {multipart: true} do |f| %>
+        <%= form_for @walker, url: walker_image_path, html: {multipart: true} do |f| %>
           <%= f.file_field :image %>
           <%= submit_tag "Update" %>
         <% end %>
@@ -31,8 +34,8 @@
             <% @walks.each do |walk| %>
            
           
-            <p> <a> <%= link_to "#{walk.name}", "/walks/#{walk.id}", method: :patch %> </a> </p>
-            
+            <p> <%= link_to "#{walk.name}", "/dogs/#{@dog.id}"%> 
+            <a> <%= link_to "Accept Walk", "/walks/#{walk.id}", method: :patch %> </a> </p> 
             <% end %>
         </div>
       </div>

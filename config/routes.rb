@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/owners/:id/edit' => 'owners#edit'
   patch '/owners/:id' => 'owners#update'
 
-  patch '/owners/:id/image', to: 'owner_image#update', as: :update_image
+  patch '/owners/:id/image', to: 'owner_image#update', as: :owner_image
   
  
   #owner login-------------------------
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   get '/walkers/:id/edit' => 'walkers#edit'
   patch '/walkers/:id/' => 'walkers#update'
 
-   # patch '/walkers/:id/image', to: 'walker_image#update', as: :update_image
+   patch '/walkers/:id/image', to: 'walker_image#update', as: :walker_image
   
   
   #walker login-------------------------------
@@ -64,14 +64,14 @@ Rails.application.routes.draw do
   get '/dogs/:id/edit' => 'dogs#edit'
   patch '/dogs/:id' => 'dogs#update'
 
-  # patch '/dogs/:id/image', to: 'dog_image#update', as: :update_image
+  patch '/dogs/:id/image', to: 'dog_image#update', as: :dog_image
 
   delete '/dogs/:id' => 'dogs#destroy'
 
  
   #walk routes----------
   get '/walks' => 'walks#index'
-  get '/walks/new' => 'walks#new'
+  get '/dogs/:id/walks/new' => 'walks#new'
   post '/walks' => 'walks#create'
 
   get '/walks/:id' => 'walks#show'

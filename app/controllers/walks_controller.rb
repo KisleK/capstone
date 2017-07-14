@@ -24,7 +24,7 @@ class WalksController < ApplicationController
     
      
       flash[:success] = "Walk Requested"
-      redirect_to '/owners/current_owner.id/'
+      redirect_to "/owners/#{current_owner.id}"
  
   end
 

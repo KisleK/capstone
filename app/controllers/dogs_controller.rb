@@ -13,11 +13,12 @@ class DogsController < ApplicationController
                     name: params[:name],
                     breed: params[:breed],
                     gender: params[:gender],
+                    age: params[:age],
                     owner_id: current_owner.id
                     )
     @dog.save
     if flash[:success] = "Puppy Added"
-      redirect_to "/owners/#{current_owner.od}"
+      redirect_to "/owners/#{current_owner.id}"
     else 
        @errors = dog.errors.full_messages
       render 'new.html.erb'
@@ -32,7 +33,8 @@ class DogsController < ApplicationController
     @dog.assign_attributes(
                           name: params[:name],
                           breed: params[:breed],
-                          gender: params[:gender]
+                          gender: params[:gender],
+                          age: params[:age]
                             )
     @dog.save!
     flash[:success] = "Puppy Updated"

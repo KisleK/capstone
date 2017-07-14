@@ -1,5 +1,11 @@
 <h1>Update Puppy</h1>
 
+<% if @dog.image_file_name %>
+   <%= image_tag @dog.image.url(:thumbnail) %>
+<% end %>
+<br>
+<br>
+
 <%= form_tag "/dogs/#{@dog.id}", method: :patch do %>
 
    <div>
@@ -12,13 +18,19 @@
 
   <div>
       <%= text_field_tag :gender, @dog.gender %>
+
   </div>
 
+  <div>
+    <%= text_field_tag :age, @dog.age %> years old.
+  </div>
   
-  
+  <br>
   <div class="form-group">
+  <% if current_owner %>   
     <%= submit_tag "Update Puppy", :class => "btn btn-sm btn-success"%>
     <%= link_to "Remove", "/dogs/#{ @dog.id}", :class => "btn btn-sm btn-danger", method: :delete %>
+  <% end %>
   </div>
 <% end %>
 

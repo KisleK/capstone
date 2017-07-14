@@ -1,7 +1,7 @@
 class Dog < ApplicationRecord
   belongs_to :owner
 
-  has_many :walks, through: :owner
+  has_many :walks,through: :owner
   has_many :walkers, through: :walks
 
   has_attached_file :image, :styles => { :medium => "300x300", :thumbnail => "200x200"}

@@ -1,4 +1,4 @@
-
+<% @dog = Dog.find(params[:id]) %>
 
 <h1>Need your dog walked? Request below.</h1>
 
@@ -7,26 +7,23 @@
    
     <%= hidden_field_tag :first_name, @current_owner.first_name %>
     <%= hidden_field_tag :last_name, @current_owner.last_name %>
-
+    <%= hidden_field_tag :dog_id, @dog.id %>
   <br>
   <div>
     <h4>Pups info</h4>
   </div>
   <div>
-    <%= label_tag :name %>
-    <%= text_field_tag :name %>
+    <%= text_field_tag :name, @dog.name %>
   </div>  
   <div>
-    <%= label_tag :breed %>
-    <%= text_field_tag :breed %>
+
+    <%= text_field_tag :breed, @dog.breed %>
   </div>
   <div>
-    <%= label_tag :age %>
-    <%= text_field_tag :age %>  years old. 
+    <%= text_field_tag :age, @dog.age %>  years old. 
   </div>
   <div>
-    <%= label_tag :gender %>
-    <%= text_field_tag :gender %>
+    <%= text_field_tag :gender, @dog.gender %>
   </div>
 
   

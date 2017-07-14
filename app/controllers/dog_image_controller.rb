@@ -10,7 +10,7 @@ class DogImageController < ApplicationController
 
   private
 
-  def owner_params
+  def dog_params
     params.require(:dog).permit(:image)
   end
 

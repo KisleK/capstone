@@ -1,22 +1,38 @@
 <% @dog = Dog.find(params[:id]) %>
 <div>
-       <% if @dog.image_file_name %>
-         <%= image_tag @dog.imge.url(:thumbnail) %>
-       <% end %>
-        
-        <%= form_for @dog, url: update_image_path, html: {multipart: true} do |f| %>
-          <%= f.file_field :image %>
-          <%= submit_tag "Update" %>
-        <% end %>
-<h3><a href="/dogs/<%= @dog.id %>}/edit"><%= @dog.name%></a></h3>
+
+<% if @dog.image_file_name %>
+  <%= image_tag @dog.image.url(:thumbnail) %>
+<% end %>
+
+  <% if current_owner %>
+
+    <%= form_for @dog, url: dog_image_path, html: {multipart: true} do |f| %>
+        <%= f.file_field :image %>
+        <%= submit_tag "Update" %>
+     <% end %>
+  <% end %>
+
+     
+ 
+<h3><a href="/dogs/<%= @dog.id %>/edit"><%= @dog.name%></a></h3>
 
 
 <div class="dog">
   
 <h3><%= @dog.breed %></h3>
 <h4><%= @dog.gender %></h4>
-<h3><%=  %></h3>
+<h5><%= @dog.age %> years old.</h5>
 <h3><%=  %></h3>
 </div>
 
-<div><a href="/walks/new">Request a walk!</a></div>
+
+<% if current_owner %>
+  
+  <div>
+    <a href="/dogs/<%= @dog.id %>/walks/new">Take for a walk!</a>
+  </div>
+<% end %>
+
+
+
