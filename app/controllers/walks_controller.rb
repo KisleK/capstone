@@ -18,7 +18,8 @@ class WalksController < ApplicationController
                       first_name: params[:first_name],
                       last_name: params[:last_name],
                       status: "walk requested",
-                      owner_id: current_owner.id
+                      owner_id: current_owner.id, 
+                      dog_id: params[:dog_id]
                       )
     @walk.save
     
@@ -61,6 +62,7 @@ end
                             status: "walk accepted"
                             )
     @walk.save
+    
 
 
     redirect_to "/walkers/#{current_walker.id}"

@@ -34,8 +34,8 @@
             <% @walks.each do |walk| %>
            
           
-            <p> <%= link_to "#{walk.name}", "/dogs/#{@dog.id}"%> 
-            <a> <%= link_to "Accept Walk", "/walks/#{walk.id}", method: :patch %> </a> </p> 
+            <h2> <%= link_to "#{walk.name}", "/dogs/#{walk.dog_id}"%> </h2> 
+           <h6> <a> <%= link_to "Accept Walk", "/walks/#{walk.id}", method: :patch %> </a> </h6> 
             <% end %>
         </div>
       </div>
@@ -46,8 +46,8 @@
   <div class="col-md-4">
     <div>
       <h1>Accepted walks:</h1>
-      <% @walks = Walk.where(status: "walk accepted", walker_id: current_walker.id) %>
-              <% @walks.each do |walk| %>
+      <% @walks = Walk.where(status: "walk accepted", walker_id: current_walker.id).last(5)%>
+              <% @walks.reverse_each do |walk| %>
              <h4> <%= walk.name %> </h4>
               <% end %>
     </div>

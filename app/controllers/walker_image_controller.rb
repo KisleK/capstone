@@ -1,4 +1,4 @@
-class WalkerImageController < ApplicationController
+ class WalkerImageController < ApplicationController
     def update
     @walker = Walker.find(params[:id])
     if @walker.update!( walker_params)

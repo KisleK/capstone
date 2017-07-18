@@ -40,7 +40,7 @@ gem 'figaro'
 
 gem 'aws-sdk', '~> 2.3'
 gem 'paperclip'
-
+gem 'unirest'
 
 
 
