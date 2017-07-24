@@ -5,19 +5,19 @@
 
 <%= form_tag '/dogs', method: :post do %>
 
-  <div>
+  <div class="form-group">
       <%= text_field_tag :name, nil, placeholder: 'Dogs Name' %>
   </div>
 
-  <div>
+  <div class="form-group">
       <%= text_field_tag :breed, nil, placeholder: 'Breed' %>
   </div>
 
-  <div>
+  <div class="form-group">
       <%= text_field_tag :gender, nil, placeholder: 'Gender' %>
   </div>
-  <div>
-      <%= text_field_tag :age, nil, placeholder: 'age' %>
+  <div class="form-group">
+      <%= text_field_tag :age, nil, placeholder: 'Age (number of years)' %>
   </div>
   <%= submit_tag "Add Puppy" %>
 

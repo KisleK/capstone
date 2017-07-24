@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="row">
-    <h1>Welcome To Woof! </h1>
+    <h1>Welcome <%= @current_owner.first_name %>! </h1>
 
 
     <% if @owner.image_file_name %>
@@ -18,7 +18,7 @@
 
   <div class="row">
    <div class="col-md-4">
-        <h6>insert profile picture here</h6>
+        
         <h1>My Info:</h1>
 
         <h4><a href="/owners/<%= current_owner.id %>/edit"><%= @current_owner.first_name %> <%= @current_owner.last_name %></a></h4>
@@ -76,22 +76,23 @@
         <br>
      </div>
     </div>
-
+</div>
 
 <br>
 
 <div class="row">
   <div id="map">
-    <div class="span12">
-      
+    <div class="col-md-12">
+    
   <script>
     function initMap() {
     var uluru = {lat: 42.0884, lng: -87.9806};
 
 
 
+
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
+      zoom: 14,
       center: uluru
     });
     var marker = new google.maps.Marker({
@@ -116,7 +117,7 @@
 
  </div>
         
-</div>
+
     
 
 

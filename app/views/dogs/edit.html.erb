@@ -8,23 +8,36 @@
 
 <%= form_tag "/dogs/#{@dog.id}", method: :patch do %>
 
-   <div>
+   <div class="form-group">
       <%= text_field_tag :name, @dog.name %>
   </div>
 
-  <div>
+  <div class="form-group">
       <%= text_field_tag :breed, @dog.breed %>
   </div>
 
-  <div>
+  <div class="form-group">
       <%= text_field_tag :gender, @dog.gender %>
-
   </div>
 
-  <div>
+  <div class="form-group">
     <%= text_field_tag :age, @dog.age %> years old.
   </div>
+  <div class="form-group">
+      <%= text_field_tag :weight, @dog.weight %>  pounds.
+  </div>
+  <br>
+   <div class="form-group">
+      How long should you walk this dog?
+  </div>
+   <div class="form-group">
+      <%= text_field_tag :distance, @dog.distance %>  minutes.
+  </div>
+  <br>
+  <div class="form-group">
   
+    <%= text_field_tag :bio, @dog.bio %>
+  </div>
   <br>
   <div class="form-group">
   <% if current_owner %>   

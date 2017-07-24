@@ -12,7 +12,7 @@ class OwnersController < ApplicationController
 
   def show     
     @owner = Owner.find_by(id: params[:id])
-    # @location = Unirest.get(URI.decode("https://api.particle.io/v1/devices/45003e001951353338363036/pool_tmp?access_token=4a034bd2fb2998bed3efac31a2b198391865f5e5")).body
+    # @location = Unirest.get(URI.decode("https://api.particle.io/v1/devices/45003e001951353338363036/gps?access_token=ca215d395203d89dd9f6bccae86c548b56808f46")).body
 
   end
 
